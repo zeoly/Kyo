@@ -1,0 +1,36 @@
+<nz-layout class="layout">
+  <nz-header>
+    <h1 style="color:#fff">宇宙无敌超强业务系统</h1>
+  </nz-header>
+  <nz-layout>
+    <nz-sider [nzWidth]="200" style="background:#fff">
+      <ul nz-menu [nzMode]="'inline'" style="height:100%">
+        <li nz-submenu>
+          <span title><i class="anticon anticon-user"></i>系统管理</span>
+          <ul>
+            <li nz-menu-item>组织架构</li>
+            <li nz-menu-item>角色管理</li>
+            <li nz-menu-item>角色权限管理</li>
+          </ul>
+        </li>
+        <li nz-submenu>
+          <span title><i class="anticon anticon-laptop"></i>文件管理</span>
+          <ul>
+            <li nz-menu-item>路径管理</li>
+            <li nz-menu-item>文件协作</li>
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout style="padding:0 24px 24px">
+      <nz-breadcrumb style="margin:12px 0;">
+        <nz-breadcrumb-item>系统管理</nz-breadcrumb-item>
+        <nz-breadcrumb-item>角色管理</nz-breadcrumb-item>
+      </nz-breadcrumb>
+      <nz-content style="background:#fff; padding: 24px; min-height: 280px;">
+        <app-role></app-role>
+      </nz-content>
+      <nz-footer style="text-align: center;">Copyright by YahaCode Dev Group</nz-footer>
+    </nz-layout>
+  </nz-layout>
+</nz-layout>
