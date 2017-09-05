@@ -10,6 +10,8 @@ export class RoleComponent implements OnInit {
 
     data = [];
 
+    isVisible = false;
+
     constructor(private http: HttpClient) { }
 
     ngOnInit(): void {
@@ -19,6 +21,20 @@ export class RoleComponent implements OnInit {
             this.data = data['data'];
         });
 
+    }
+
+    showModal = () => {
+        this.isVisible = true;
+    }
+
+    handleOk = (e) => {
+        console.log('点击了确定');
+        this.isVisible = false;
+    }
+
+    handleCancel = (e) => {
+        console.log(e);
+        this.isVisible = false;
     }
 
 }
