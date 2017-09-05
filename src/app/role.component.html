@@ -1,8 +1,9 @@
-<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10">
+<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzShowSizeChanger]="true">
     <thead nz-thead>
         <tr>
             <th nz-th><span>角色名</span></th>
             <th nz-th><span>描述</span></th>
+            <th nz-th><span>操作</span></th>
         </tr>
     </thead>
     <tbody nz-tbody>
@@ -10,7 +11,14 @@
             <td nz-td>
                 <a>{{data.name}}</a>
             </td>
-            <td nz-td>{{data.desc}}</td>
+            <td nz-td>{{data.description}}</td>
+            <td nz-td>
+                <a class="anticon anticon-edit">修改</a>
+                <span nz-table-divider></span>
+                <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()">
+                    <a nz-popconfirm class="anticon anticon-close">删除</a>
+                </nz-popconfirm>
+            </td>
         </tr>
     </tbody>
 </nz-table>
