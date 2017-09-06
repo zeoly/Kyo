@@ -16,7 +16,7 @@ export class RoleComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.http.get('http://localhost:8081/roleAction/getRoleList.do').subscribe(data => {
+        this.http.get('/roleAction/getRoleList.do').subscribe(data => {
             console.log(data);
             this.data = data['data'];
         });
