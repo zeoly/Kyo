@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { NzMessageService } from 'ng-zorro-antd';
 
 @Component({
     selector: 'app-role',
@@ -12,15 +13,12 @@ export class RoleComponent implements OnInit {
 
     isVisible = false;
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private _message: NzMessageService) { }
 
     ngOnInit(): void {
-
-        this.http.get('/roleAction/getRoleList.do').subscribe(data => {
-            console.log(data);
+        this.http.get('/role').subscribe(data => {
             this.data = data['data'];
         });
-
     }
 
     showModal = () => {
@@ -37,4 +35,17 @@ export class RoleComponent implements OnInit {
         this.isVisible = false;
     }
 
+    delete = (role) => {
+        const param = { roleId: role.idBfRole };
+        this.http.delete(
+            '/role/' + role.idBfRole
+        ).subscribe(data => {
+            this.errorNotification(data['msg']);
+            console.log(data);
+        });
+    }
+
+    errorNotification = (msg) => {
+        this._message.create('error', msg, { nzDuration: 4000 });
+    }
 }

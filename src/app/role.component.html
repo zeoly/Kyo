@@ -18,7 +18,7 @@
             <td nz-td>
                 <a class="anticon anticon-edit">修改</a>
                 <span nz-table-divider></span>
-                <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="confirm()" (nzOnCancel)="cancel()">
+                <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="delete(data)">
                     <a nz-popconfirm class="anticon anticon-close">删除</a>
                 </nz-popconfirm>
             </td>

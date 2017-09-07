@@ -6,7 +6,6 @@ import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest } from '@angular/c
 export class KyoInterceptor implements HttpInterceptor {
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        console.log(req.url);
         const newReq = req.clone({ url: 'http://localhost:8081' + req.url });
         return next.handle(newReq);
     }
