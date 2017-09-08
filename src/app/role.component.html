@@ -1,4 +1,4 @@
-<button nz-button [nzType]="'primary'" (click)="showModal()">
+<button nz-button [nzType]="'primary'" (click)="openDetail()">
     <span>新增角色</span>
 </button>
 <nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzShowSizeChanger]="true">
@@ -25,7 +25,7 @@
         </tr>
     </tbody>
 </nz-table>
-<nz-modal [nzVisible]="isVisible" [nzTitle]="'角色详情'" [nzContent]="modalContent" (nzOnCancel)="handleCancel($event)" (nzOnOk)="handleOk($event)">
+<nz-modal [nzVisible]="isVisible" [nzTitle]="'角色详情'" [nzContent]="modalContent" (nzOnCancel)="closeDetail($event)" (nzOnOk)="saveRole($event)">
     <ng-template #modalContent>
         <app-role-detail></app-role-detail>
     </ng-template>

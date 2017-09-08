@@ -13,25 +13,38 @@ export class RoleComponent implements OnInit {
 
     isVisible = false;
 
-    constructor(private http: HttpClient, private _message: NzMessageService) { }
+    constructor(
+        private http: HttpClient,
+        private _message: NzMessageService
+    ) { }
 
     ngOnInit(): void {
+        this.fetchRoleList();
+    }
+
+    fetchRoleList = () => {
         this.http.get('/role').subscribe(data => {
             this.data = data['data'];
         });
     }
 
-    showModal = () => {
+    openDetail = () => {
         this.isVisible = true;
     }
 
-    handleOk = (e) => {
-        console.log('点击了确定');
-        this.isVisible = false;
+    saveRole = (e) => {
+        const param = {
+            name: 'testtesttest',
+            description: 'adsfadsfad'
+        };
+        this.http.post('/role', param).subscribe(data => {
+            this.errorNotification('新增角色成功');
+            this.isVisible = false;
+            this.fetchRoleList();
+        });
     }
 
-    handleCancel = (e) => {
-        console.log(e);
+    closeDetail = (e) => {
         this.isVisible = false;
     }
 
@@ -40,12 +53,12 @@ export class RoleComponent implements OnInit {
         this.http.delete(
             '/role/' + role.idBfRole
         ).subscribe(data => {
-            this.errorNotification(data['msg']);
-            console.log(data);
+            this.errorNotification('删除角色成功');
+            this.fetchRoleList();
         });
     }
 
     errorNotification = (msg) => {
-        this._message.create('error', msg, { nzDuration: 4000 });
+        this._message.create('success', msg);
     }
 }
