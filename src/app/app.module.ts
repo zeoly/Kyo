@@ -3,15 +3,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzMessageService } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
 import { RoleComponent } from './role.component';
 import { RoleDetailComponent } from './role-detail.component';
+
 import { KyoInterceptor } from './interceptor.service';
+import { RoleService } from './role.service';
+// import { HttpInterceptor } from './http-interceptor.service';
 
 
 @NgModule({
@@ -29,11 +33,13 @@ import { KyoInterceptor } from './interceptor.service';
     BrowserAnimationsModule,
     NgZorroAntdModule.forRoot()
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: KyoInterceptor,
-    multi: true,
-  }],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: KyoInterceptor,
+      multi: true,
+    },
+    RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

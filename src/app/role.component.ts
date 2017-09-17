@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd';
+import { RoleService } from './role.service';
 
 @Component({
     selector: 'app-role',
@@ -15,7 +16,8 @@ export class RoleComponent implements OnInit {
 
     constructor(
         private http: HttpClient,
-        private _message: NzMessageService
+        private _message: NzMessageService,
+        private roleService: RoleService
     ) { }
 
     ngOnInit(): void {
@@ -23,8 +25,8 @@ export class RoleComponent implements OnInit {
     }
 
     fetchRoleList = () => {
-        this.http.get('/role').subscribe(data => {
-            this.data = data['data'];
+        this.roleService.getRoles().subscribe(data => {
+            this.data = data;
         });
     }
 

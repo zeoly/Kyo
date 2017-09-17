@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Role } from './role';
 
 @Component({
     selector: 'app-role-detail',
@@ -7,6 +8,8 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 
 export class RoleDetailComponent implements OnInit {
+
+    @Input() role: Role;
 
     validateForm: FormGroup;
 
