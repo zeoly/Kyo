@@ -20,4 +20,8 @@ export class RoleService {
     addRole(role: Role): Observable<void> {
         return this.http.post(this.Role_URL, role).map(() => null);
     }
+
+    deleteRole(id: string): Observable<void> {
+        return this.http.delete(this.Role_URL + '/' + id).map(() => null);
+    }
 }

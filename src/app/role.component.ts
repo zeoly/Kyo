@@ -52,10 +52,7 @@ export class RoleComponent implements OnInit {
     }
 
     delete = (role) => {
-        const param = { roleId: role.idBfRole };
-        this.http.delete(
-            '/role/' + role.idBfRole
-        ).subscribe(data => {
+        this.roleService.deleteRole(role.idBfRole).subscribe(data => {
             this.errorNotification('删除角色成功');
             this.fetchRoleList();
         });
