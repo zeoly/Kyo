@@ -21,7 +21,6 @@ export class RoleDetailComponent implements OnInit {
         }
     }
 
-
     constructor(private formBuilder: FormBuilder) {
     }
 

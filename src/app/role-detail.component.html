@@ -4,7 +4,7 @@
             <label for="name" nz-form-item-required>角色名</label>
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('name')">
-            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'"></nz-input>
+            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'" [(ngModel)]="role.name"></nz-input>
             <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">请输入角色名!</div>
         </div>
     </div>
@@ -13,7 +13,7 @@
             <label for="description" nz-form-item-required>角色描述</label>
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('description')">
-            <nz-input [nzSize]="'large'" formControlName="description" [nzId]="'description'"></nz-input>
+            <nz-input [nzSize]="'large'" formControlName="description" [nzId]="'description'" [(ngModel)]="role.description"></nz-input>
             <div nz-form-explain *ngIf="getFormControl('description').dirty&&getFormControl('description').hasError('required')">请输入角色描述!</div>
         </div>
     </div>

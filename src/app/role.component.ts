@@ -58,6 +58,11 @@ export class RoleComponent implements OnInit {
         });
     }
 
+    modify = (role) => {
+        this.role = role;
+        this.openDetail();
+    }
+
     errorNotification = (msg) => {
         this._message.create('success', msg);
     }

@@ -16,7 +16,7 @@
             </td>
             <td nz-td>{{data.description}}</td>
             <td nz-td>
-                <a class="anticon anticon-edit">修改</a>
+                <a class="anticon anticon-edit" (click)="modify(data)">修改</a>
                 <span nz-table-divider></span>
                 <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="delete(data)">
                     <a nz-popconfirm class="anticon anticon-close">删除</a>
@@ -27,6 +27,6 @@
 </nz-table>
 <nz-modal [nzVisible]="isVisible" [nzTitle]="'角色详情'" [nzContent]="modalContent" (nzOnCancel)="closeDetail($event)" (nzOnOk)="saveRole($event)">
     <ng-template #modalContent>
-        <app-role-detail></app-role-detail>
+        <app-role-detail [role]="role"></app-role-detail>
     </ng-template>
 </nz-modal>
