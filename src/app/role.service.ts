@@ -16,4 +16,8 @@ export class RoleService {
             data['data'] as Role[]
         );
     }
+
+    addRole(role: Role): Observable<void> {
+        return this.http.post(this.Role_URL, role).map(() => null);
+    }
 }

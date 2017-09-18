@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd';
 import { RoleService } from './role.service';
+import { Role } from './role';
 
 @Component({
     selector: 'app-role',
@@ -11,6 +12,8 @@ import { RoleService } from './role.service';
 export class RoleComponent implements OnInit {
 
     data = [];
+
+    role: Role = new Role();
 
     isVisible = false;
 
@@ -35,11 +38,9 @@ export class RoleComponent implements OnInit {
     }
 
     saveRole = (e) => {
-        const param = {
-            name: 'testtesttest',
-            description: 'adsfadsfad'
-        };
-        this.http.post('/role', param).subscribe(data => {
+        this.role.name = 'test士大夫test';
+        this.role.description = '时刻都将发挥';
+        this.roleService.addRole(this.role).subscribe(data => {
             this.errorNotification('新增角色成功');
             this.isVisible = false;
             this.fetchRoleList();
