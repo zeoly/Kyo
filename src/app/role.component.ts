@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd';
+import { NzModalService } from 'ng-zorro-antd';
 import { RoleService } from './role.service';
+import { RoleDetailComponent } from './role-detail.component';
 import { Role } from './role';
 
 @Component({
@@ -20,6 +22,7 @@ export class RoleComponent implements OnInit {
     constructor(
         private http: HttpClient,
         private _message: NzMessageService,
+        private modalService: NzModalService,
         private roleService: RoleService
     ) { }
 
@@ -34,19 +37,20 @@ export class RoleComponent implements OnInit {
     }
 
     openDetail = () => {
-        this.isVisible = true;
-    }
-
-    saveRole = (e) => {
-        this.roleService.addRole(this.role).subscribe(data => {
-            this.errorNotification('新增角色成功');
-            this.isVisible = false;
-            this.fetchRoleList();
+        const subscription = this.modalService.open({
+            title: '角色详情',
+            content: RoleDetailComponent,
+            footer: false,
+            componentParams: {
+                role: this.role
+            }
         });
-    }
-
-    closeDetail = (e) => {
-        this.isVisible = false;
+        subscription.subscribe(result => {
+            if (result === 'ok') {
+                this.errorNotification('新增角色成功');
+                this.fetchRoleList();
+            }
+        });
     }
 
     delete = (role) => {

@@ -24,6 +24,9 @@ import { RoleService } from './role.service';
     RoleComponent,
     RoleDetailComponent
   ],
+  entryComponents: [
+    RoleDetailComponent
+  ],
   imports: [
     BrowserModule,
     FormsModule,

@@ -1,10 +1,24 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Role } from './role';
+import { RoleService } from './role.service';
+import { NzModalSubject } from 'ng-zorro-antd';
+
 
 @Component({
     selector: 'app-role-detail',
-    templateUrl: './role-detail.component.html'
+    templateUrl: './role-detail.component.html',
+    styles: [
+        `
+        :host ::ng-deep .customize-footer {
+          border-top: 1px solid #e9e9e9;
+          padding: 10px 18px 0 10px;
+          text-align: right;
+          border-radius: 0 0 0px 0px;
+          margin: 15px -16px -5px -16px;
+        }
+      `
+    ]
 })
 
 export class RoleDetailComponent implements OnInit {
@@ -21,8 +35,11 @@ export class RoleDetailComponent implements OnInit {
         }
     }
 
-    constructor(private formBuilder: FormBuilder) {
-    }
+    constructor(
+        private formBuilder: FormBuilder,
+        private modalSubject: NzModalSubject,
+        private roleService: RoleService
+    ) { }
 
     ngOnInit(): void {
         this.validateForm = this.formBuilder.group({
@@ -35,5 +52,15 @@ export class RoleDetailComponent implements OnInit {
         return this.validateForm.controls[name];
     }
 
+    saveRole = (e) => {
+        this.roleService.addRole(this.role).subscribe(data => {
+            this.modalSubject.next('ok');
+            this.closeDetail(e);
+        });
+    }
+
+    closeDetail = (e) => {
+        this.modalSubject.destroy();
+    }
 
 }

@@ -25,12 +25,3 @@
         </tr>
     </tbody>
 </nz-table>
-<nz-modal [nzVisible]="isVisible" [nzTitle]="'角色详情'" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="closeDetail($event)">
-    <ng-template #modalContent>
-        <app-role-detail [role]="role"></app-role-detail>
-    </ng-template>
-    <ng-template #modalFooter>
-        <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="closeDetail($event)">返 回</button>
-        <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="saveRole($event)" [nzLoading]="isConfirmLoading">保 存</button>
-    </ng-template>
-</nz-modal>

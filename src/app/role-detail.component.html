@@ -1,20 +1,27 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
-    <div nz-form-item nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-            <label for="name" nz-form-item-required>角色名</label>
+<!-- <nz-modal [nzTitle]="'角色详情'" [nzContent]="modalContent" [nzFooter]="modalFooter" (nzOnCancel)="closeDetail($event)"> -->
+<div>
+    <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="name" nz-form-item-required>角色名</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('name')">
+                <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'" [(ngModel)]="role.name"></nz-input>
+                <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">请输入角色名!</div>
+            </div>
         </div>
-        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('name')">
-            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'" [(ngModel)]="role.name"></nz-input>
-            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">请输入角色名!</div>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+                <label for="description" nz-form-item-required>角色描述</label>
+            </div>
+            <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('description')">
+                <nz-input [nzSize]="'large'" formControlName="description" [nzId]="'description'" [(ngModel)]="role.description"></nz-input>
+                <div nz-form-explain *ngIf="getFormControl('description').dirty&&getFormControl('description').hasError('required')">请输入角色描述!</div>
+            </div>
         </div>
+    </form>
+    <div class="customize-footer">
+        <button nz-button [nzType]="'default'" [nzSize]="'large'" (click)="closeDetail($event)">返 回</button>
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="saveRole($event)" [nzLoading]="isConfirmLoading">保 存</button>
     </div>
-    <div nz-form-item nz-row>
-        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-            <label for="description" nz-form-item-required>角色描述</label>
-        </div>
-        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('description')">
-            <nz-input [nzSize]="'large'" formControlName="description" [nzId]="'description'" [(ngModel)]="role.description"></nz-input>
-            <div nz-form-explain *ngIf="getFormControl('description').dirty&&getFormControl('description').hasError('required')">请输入角色描述!</div>
-        </div>
-    </div>
-</form>
+</div>
