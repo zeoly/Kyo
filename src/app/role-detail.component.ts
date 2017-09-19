@@ -25,6 +25,8 @@ export class RoleDetailComponent implements OnInit {
 
     @Input() role: Role;
 
+    isConfirmLoading = false;
+
     validateForm: FormGroup;
 
     submitForm() {
@@ -53,7 +55,9 @@ export class RoleDetailComponent implements OnInit {
     }
 
     saveRole = (e) => {
+        this.isConfirmLoading = true;
         this.roleService.addRole(this.role).subscribe(data => {
+            this.isConfirmLoading = false;
             this.modalSubject.next('ok');
             this.closeDetail(e);
         });
