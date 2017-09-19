@@ -36,6 +36,11 @@ export class RoleComponent implements OnInit {
         });
     }
 
+    openBlank = () => {
+        this.role = new Role();
+        this.openDetail();
+    }
+
     openDetail = () => {
         const subscription = this.modalService.open({
             title: '角色详情',
