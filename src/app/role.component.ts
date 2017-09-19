@@ -38,8 +38,6 @@ export class RoleComponent implements OnInit {
     }
 
     saveRole = (e) => {
-        this.role.name = 'test士大夫test';
-        this.role.description = '时刻都将发挥';
         this.roleService.addRole(this.role).subscribe(data => {
             this.errorNotification('新增角色成功');
             this.isVisible = false;
@@ -59,7 +57,7 @@ export class RoleComponent implements OnInit {
     }
 
     modify = (role) => {
-        this.role = role;
+        Object.assign(this.role, role);
         this.openDetail();
     }
 
