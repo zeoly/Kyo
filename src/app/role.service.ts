@@ -12,9 +12,7 @@ export class RoleService {
     constructor(private http: HttpClient) { }
 
     getRoles(): Observable<Role[]> {
-        return this.http.get(this.Role_URL).map(data =>
-            data['data'] as Role[]
-        );
+        return this.http.get(this.Role_URL).map(data => data['data'] as Role[]);
     }
 
     addRole(role: Role): Observable<void> {
@@ -23,5 +21,9 @@ export class RoleService {
 
     deleteRole(id: string): Observable<void> {
         return this.http.delete(this.Role_URL + '/' + id).map(() => null);
+    }
+
+    modifyRole(role: Role): Observable<void> {
+        return this.http.patch(this.Role_URL, role).map(() => null);
     }
 }

@@ -29,7 +29,7 @@ export class RoleDetailComponent implements OnInit {
 
     validateForm: FormGroup;
 
-    submitForm() {
+    validForm() {
         for (const i in this.validateForm.controls) {
             if (this.validateForm.controls[i]) {
                 this.validateForm.controls[i].markAsDirty();
@@ -55,20 +55,33 @@ export class RoleDetailComponent implements OnInit {
     }
 
     saveRole = (e) => {
-        this.submitForm();
+        this.validForm();
         if (!this.validateForm.valid) {
             return;
         }
         this.isConfirmLoading = true;
-        this.roleService.addRole(this.role).subscribe(data => {
-            this.isConfirmLoading = false;
-            this.modalSubject.next('ok');
-            this.closeDetail(e);
+        if (this.role.idBfRole) {
+            this.modifyRole(e);
+        } else {
+            this.addRole(e);
+        }
+    }
+
+    modifyRole = (e) => {
+        this.roleService.modifyRole(this.role).subscribe(data => {
+            this.closeDetail('modify');
         });
     }
 
-    closeDetail = (e) => {
-        this.modalSubject.destroy();
+    addRole = (e) => {
+        this.roleService.addRole(this.role).subscribe(data => {
+            this.closeDetail('add');
+        });
     }
 
+    closeDetail = (mark: string) => {
+        this.isConfirmLoading = false;
+        this.modalSubject.next(mark);
+        this.modalSubject.destroy();
+    }
 }
