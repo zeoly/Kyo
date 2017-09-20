@@ -16,7 +16,7 @@ import { RoleDetailComponent } from './role-detail.component';
 import { KyoInterceptor } from './interceptor.service';
 import { RoleService } from './role.service';
 // import { HttpInterceptor } from './http-interceptor.service';
-
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { RoleService } from './role.service';
     HttpModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot()
+    NgZorroAntdModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     {
