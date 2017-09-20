@@ -55,6 +55,10 @@ export class RoleDetailComponent implements OnInit {
     }
 
     saveRole = (e) => {
+        this.submitForm();
+        if (!this.validateForm.valid) {
+            return;
+        }
         this.isConfirmLoading = true;
         this.roleService.addRole(this.role).subscribe(data => {
             this.isConfirmLoading = false;
