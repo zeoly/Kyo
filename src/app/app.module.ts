@@ -10,6 +10,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
 import { RoleComponent } from './role.component';
 import { RoleDetailComponent } from './role-detail.component';
 
@@ -22,7 +23,8 @@ import { AppRoutingModule } from './app-routing.module';
   declarations: [
     AppComponent,
     RoleComponent,
-    RoleDetailComponent
+    RoleDetailComponent,
+    DashboardComponent
   ],
   entryComponents: [
     RoleDetailComponent
