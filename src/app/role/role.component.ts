@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { NzMessageService } from 'ng-zorro-antd';
 import { NzModalService } from 'ng-zorro-antd';
 import { RoleService } from './role.service';
@@ -20,7 +19,6 @@ export class RoleComponent implements OnInit {
     isVisible = false;
 
     constructor(
-        private http: HttpClient,
         private _message: NzMessageService,
         private modalService: NzModalService,
         private roleService: RoleService
