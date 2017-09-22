@@ -10,7 +10,7 @@ import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { NzMessageService } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeptManageComponent } from './dept/dept-manage.component';
 import { RoleComponent } from './role/role.component';
 import { RoleDetailComponent } from './role/role-detail.component';
