@@ -11,11 +11,12 @@ import { NzMessageService } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
-import { RoleComponent } from './role.component';
-import { RoleDetailComponent } from './role-detail.component';
+import { DeptManageComponent } from './dept-manage.component';
+import { RoleComponent } from './role/role.component';
+import { RoleDetailComponent } from './role/role-detail.component';
 
 import { KyoInterceptor } from './interceptor.service';
-import { RoleService } from './role.service';
+import { RoleService } from './role/role.service';
 // import { HttpInterceptor } from './http-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -24,7 +25,8 @@ import { AppRoutingModule } from './app-routing.module';
     AppComponent,
     RoleComponent,
     RoleDetailComponent,
-    DashboardComponent
+    DashboardComponent,
+    DeptManageComponent
   ],
   entryComponents: [
     RoleDetailComponent

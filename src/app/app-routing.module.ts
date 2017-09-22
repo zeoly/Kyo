@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard.component';
-import { RoleComponent } from './role.component';
+import { RoleComponent } from './role/role.component';
+import { DeptManageComponent } from './dept-manage.component';
 
 const routes: Routes = [
     {
@@ -14,6 +15,9 @@ const routes: Routes = [
     }, {
         path: 'role',
         component: RoleComponent
+    }, {
+        path: 'dept',
+        component: DeptManageComponent
     }
 ];
 
