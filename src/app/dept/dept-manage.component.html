@@ -1,4 +1,4 @@
-<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzShowSizeChanger]="true">
+<nz-table #nzTable [nzDataSource]="peopleList" [nzPageSize]="10" [nzShowSizeChanger]="true">
     <thead nz-thead>
         <tr>
             <th nz-th><span>人员代码</span></th>
@@ -13,9 +13,9 @@
             <td nz-td>{{people.name}}</td>
             <td nz-td>{{people.status}}</td>
             <td nz-td>
-                <a class="anticon anticon-edit" (click)="modify(people)">修 改</a>
+                <a class="anticon anticon-edit" (click)="modifyPeople(people)">修 改</a>
                 <span nz-table-divider></span>
-                <nz-popconfirm [nzTitle]="'确定要删除人员吗？'" (nzOnConfirm)="delete(people)">
+                <nz-popconfirm [nzTitle]="'确定要删除人员吗？'" (nzOnConfirm)="deletePeople(people)">
                     <a nz-popconfirm class="anticon anticon-close">删 除</a>
                 </nz-popconfirm>
             </td>

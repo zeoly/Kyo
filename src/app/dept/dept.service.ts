@@ -1,0 +1,23 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Rx';
+import 'rxjs/add/operator/map';
+import { People } from './people';
+
+@Injectable()
+export class DeptService {
+
+    private PEOPLE_URL = '/people';
+
+    private DEPT_URL = '/department';
+
+    constructor(private http: HttpClient) { }
+
+    getPeopleList(deptId: string): Observable<People[]> {
+        return this.http.get(this.DEPT_URL + '/' + deptId + this.PEOPLE_URL).map(data => data['data'] as People[]);
+    }
+
+    deletePeople(peopleId: string): Observable<void> {
+        return this.http.delete(this.PEOPLE_URL + '/' + peopleId).map(() => null);
+    }
+}

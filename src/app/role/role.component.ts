@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NzMessageService } from 'ng-zorro-antd';
 import { NzModalService } from 'ng-zorro-antd';
+import { NotificationService } from '../shared/notification.service';
 import { RoleService } from './role.service';
 import { RoleDetailComponent } from './role-detail.component';
 import { Role } from './role';
@@ -19,7 +19,7 @@ export class RoleComponent implements OnInit {
     isVisible = false;
 
     constructor(
-        private _message: NzMessageService,
+        private notificationService: NotificationService,
         private modalService: NzModalService,
         private roleService: RoleService
     ) { }
@@ -50,27 +50,24 @@ export class RoleComponent implements OnInit {
         });
         subscription.subscribe(result => {
             if (result === 'add') {
-                this.errorNotification('新增角色成功');
+                this.notificationService.success('新增角色成功');
             } else if (result === 'modify') {
-                this.errorNotification('修改角色成功');
+                this.notificationService.success('修改角色成功');
             }
             this.fetchRoleList();
         });
     }
 
-    delete = (role) => {
+    delete = (role: Role) => {
         this.roleService.deleteRole(role.idBfRole).subscribe(data => {
-            this.errorNotification('删除角色成功');
+            this.notificationService.success('删除角色成功');
             this.fetchRoleList();
         });
     }
 
-    modify = (role) => {
+    modify = (role: Role) => {
         Object.assign(this.role, role);
         this.openDetail();
     }
 
-    errorNotification = (msg) => {
-        this._message.create('success', msg);
-    }
 }
