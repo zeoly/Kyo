@@ -20,11 +20,11 @@
         </div>
         <div nz-form-item nz-row>
             <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
-                <label for="role">用户角色</label>
+                <label for="roleList">用户角色</label>
             </div>
-            <div nz-col [nzSm]="14" [nzXs]="24">
-                <nz-select [nzMode]="'multiple'" [nzPlaceHolder]="'请选择角色'" [(ngModel)]="people.roleList">
-                    <nz-option *ngFor="let role of roleList" [nzLabel]="role.name" [nzValue]="role.idBfRole"></nz-option>
+            <div nz-col nz-form-control [nzSm]="14" [nzXs]="24">
+                <nz-select [nzMode]="'multiple'" formControlName="roleList" [nzPlaceHolder]="'请选择角色'" [(ngModel)]="selectedRole">
+                    <nz-option *ngFor="let role of allRoleList" [nzLabel]="role.name" [nzValue]="role.idBfRole"></nz-option>
                 </nz-select>
             </div>
         </div>

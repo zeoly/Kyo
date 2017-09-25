@@ -25,7 +25,7 @@ export class DeptManageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.deptId = '8a8080855896c3f1015896c3f5f00000';
+        this.deptId = '8a808086591812ec01591812f1860000';
         this.getPeopleList(this.deptId);
     }
 

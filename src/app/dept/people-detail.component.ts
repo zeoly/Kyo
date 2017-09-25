@@ -26,7 +26,9 @@ export class PeopleDetailComponent implements OnInit {
 
     @Input() people: People;
 
-    roleList: Role[] = [];
+    allRoleList: Role[] = [];
+
+    selectedRole: string[];
 
     isConfirmLoading = false;
 
@@ -42,18 +44,33 @@ export class PeopleDetailComponent implements OnInit {
     ngOnInit(): void {
         this.validateForm = this.formBuilder.group({
             code: [null, [Validators.required]],
-            name: [null, [Validators.required]]
+            name: [null, [Validators.required]],
+            roleList: [null, [Validators.required]]
         });
         this.getRoleList();
+        this.getPeopleRole();
     }
 
     getRoleList(): void {
         this.roleService.getRoles().subscribe(data => {
-            this.roleList = data;
+            this.allRoleList = data;
         });
     }
 
     getFormControl(name) {
         return this.validateForm.controls[name];
+    }
+
+    getPeopleRole(): void {
+        this.deptService.getPeopleRole(this.people.idBfPeople).subscribe(data => {
+            this.selectedRole = [];
+            data.forEach(role => {
+                this.selectedRole.push(role.idBfRole);
+            });
+        });
+    }
+
+    savePeople(e): void {
+        console.log(this.selectedRole);
     }
 }
