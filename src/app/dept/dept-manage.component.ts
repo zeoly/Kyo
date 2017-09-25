@@ -25,7 +25,7 @@ export class DeptManageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.deptId = '8a808086591812ec01591812f1860000';
+        this.deptId = '8a808087583fa7b701583faadf300000';
         this.getPeopleList(this.deptId);
     }
 
@@ -57,12 +57,10 @@ export class DeptManageComponent implements OnInit {
             }
         });
         subscription.subscribe(result => {
-            if (result === 'add') {
-                this.notificationService.success('新增人员成功');
-            } else if (result === 'modify') {
-                this.notificationService.success('修改人员信息成功');
+            if (result === '修改' || result === '新增') {
+                this.notificationService.success(result + '人员信息成功');
+                this.getPeopleList(this.deptId);
             }
-            this.getPeopleList(this.deptId);
         });
     }
 }

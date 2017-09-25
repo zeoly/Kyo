@@ -51,6 +51,12 @@ export class PeopleDetailComponent implements OnInit {
         this.getPeopleRole();
     }
 
+    closeDetail = (mark: string) => {
+        this.isConfirmLoading = false;
+        this.modalSubject.next(mark);
+        this.modalSubject.destroy();
+    }
+
     getRoleList(): void {
         this.roleService.getRoles().subscribe(data => {
             this.allRoleList = data;
@@ -71,6 +77,9 @@ export class PeopleDetailComponent implements OnInit {
     }
 
     savePeople(e): void {
-        console.log(this.selectedRole);
+        this.people.roleIdList = this.selectedRole;
+        this.deptService.updatePeople(this.people).subscribe(() => {
+            this.closeDetail('修改');
+        });
     }
 }

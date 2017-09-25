@@ -69,13 +69,13 @@ export class RoleDetailComponent implements OnInit {
 
     modifyRole = (e) => {
         this.roleService.modifyRole(this.role).subscribe(data => {
-            this.closeDetail('modify');
+            this.closeDetail('修改');
         });
     }
 
     addRole = (e) => {
         this.roleService.addRole(this.role).subscribe(data => {
-            this.closeDetail('add');
+            this.closeDetail('新增');
         });
     }
 

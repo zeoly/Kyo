@@ -22,6 +22,10 @@ export class DeptService {
         return this.http.get(this.PEOPLE_URL + '/' + peopleId + '/role').map(data => data['data'] as Role[]);
     }
 
+    updatePeople(people: People): Observable<void> {
+        return this.http.patch(this.PEOPLE_URL, people).map(() => null);
+    }
+
     deletePeople(peopleId: string): Observable<void> {
         return this.http.delete(this.PEOPLE_URL + '/' + peopleId).map(() => null);
     }

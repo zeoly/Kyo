@@ -49,12 +49,10 @@ export class RoleComponent implements OnInit {
             }
         });
         subscription.subscribe(result => {
-            if (result === 'add') {
-                this.notificationService.success('新增角色成功');
-            } else if (result === 'modify') {
-                this.notificationService.success('修改角色成功');
+            if (result === '新增' || result === '修改') {
+                this.notificationService.success(result + '角色成功');
+                this.fetchRoleList();
             }
-            this.fetchRoleList();
         });
     }
 
