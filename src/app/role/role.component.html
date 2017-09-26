@@ -1,7 +1,7 @@
 <button nz-button [nzType]="'primary'" (click)="openBlank()">
     <span>新增角色</span>
 </button>
-<nz-table #nzTable [nzDataSource]="data" [nzPageSize]="10" [nzShowSizeChanger]="true">
+<nz-table #nzTable [nzDataSource]="roles" [nzPageSize]="10" [nzShowSizeChanger]="true">
     <thead nz-thead>
         <tr>
             <th nz-th><span>角色名</span></th>
@@ -10,15 +10,15 @@
         </tr>
     </thead>
     <tbody nz-tbody>
-        <tr nz-tbody-tr *ngFor="let data of nzTable.data">
+        <tr nz-tbody-tr *ngFor="let role of nzTable.data">
             <td nz-td>
-                <a (click)="modify(data)">{{data.name}}</a>
+                <a (click)="modify(role)">{{data.name}}</a>
             </td>
             <td nz-td>{{data.description}}</td>
             <td nz-td>
-                <a class="anticon anticon-edit" (click)="modify(data)">修 改</a>
+                <a class="anticon anticon-edit" (click)="modify(role)">修 改</a>
                 <span nz-table-divider></span>
-                <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="delete(data)">
+                <nz-popconfirm [nzTitle]="'确定要删除这个角色吗？'" (nzOnConfirm)="delete(role)">
                     <a nz-popconfirm class="anticon anticon-close">删 除</a>
                 </nz-popconfirm>
             </td>

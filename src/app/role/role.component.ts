@@ -12,9 +12,9 @@ import { Role } from './role';
 
 export class RoleComponent implements OnInit {
 
-    data = [];
+    roles = [];
 
-    role: Role = new Role();
+    selectedRole: Role = new Role();
 
     isVisible = false;
 
@@ -30,12 +30,12 @@ export class RoleComponent implements OnInit {
 
     fetchRoleList = () => {
         this.roleService.getRoles().subscribe(data => {
-            this.data = data;
+            this.roles = data;
         });
     }
 
     openBlank = () => {
-        this.role = new Role();
+        this.selectedRole = new Role();
         this.openDetail();
     }
 
@@ -45,7 +45,7 @@ export class RoleComponent implements OnInit {
             content: RoleDetailComponent,
             footer: false,
             componentParams: {
-                role: this.role
+                role: this.selectedRole
             }
         });
         subscription.subscribe(result => {
@@ -64,7 +64,7 @@ export class RoleComponent implements OnInit {
     }
 
     modify = (role: Role) => {
-        Object.assign(this.role, role);
+        Object.assign(this.selectedRole, role);
         this.openDetail();
     }
 
