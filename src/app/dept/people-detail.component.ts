@@ -9,17 +9,7 @@ import { Role } from '../role/role';
 @Component({
     selector: 'app-people-detail',
     templateUrl: './people-detail.component.html',
-    styles: [
-        `
-        :host ::ng-deep .customize-footer {
-          border-top: 1px solid #e9e9e9;
-          padding: 10px 18px 0 10px;
-          text-align: right;
-          border-radius: 0 0 0px 0px;
-          margin: 15px -16px -5px -16px;
-        }
-      `
-    ]
+    styleUrls: ['./people-detail.component.css']
 })
 
 export class PeopleDetailComponent implements OnInit {

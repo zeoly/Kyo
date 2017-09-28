@@ -8,17 +8,7 @@ import { NzModalSubject } from 'ng-zorro-antd';
 @Component({
     selector: 'app-role-detail',
     templateUrl: './role-detail.component.html',
-    styles: [
-        `
-        :host ::ng-deep .customize-footer {
-          border-top: 1px solid #e9e9e9;
-          padding: 10px 18px 0 10px;
-          text-align: right;
-          border-radius: 0 0 0px 0px;
-          margin: 15px -16px -5px -16px;
-        }
-      `
-    ]
+    styleUrls: ['./role-detail.component.css']
 })
 
 export class RoleDetailComponent implements OnInit {
