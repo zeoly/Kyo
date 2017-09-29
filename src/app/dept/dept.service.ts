@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import { Department } from './department';
 import { People } from './people';
 import { Role } from '../role/role';
 
@@ -28,5 +29,9 @@ export class DeptService {
 
     deletePeople(peopleId: string): Observable<void> {
         return this.http.delete(this.PEOPLE_URL + '/' + peopleId).map(() => null);
+    }
+
+    getAllDepartment(): Observable<Department[]> {
+        return this.http.get(this.DEPT_URL).map(data => [data['data']] as Department[]);
     }
 }

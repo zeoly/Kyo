@@ -3,6 +3,7 @@ import { NzModalService } from 'ng-zorro-antd';
 import { NotificationService } from '../shared/notification.service';
 import { PeopleDetailComponent } from './people-detail.component';
 import { DeptService } from './dept.service';
+import { Department } from './department';
 import { People } from './people';
 
 @Component({
@@ -16,7 +17,9 @@ export class DeptManageComponent implements OnInit {
 
     people: People = new People();
 
-    deptId: string;
+    deptList: Department[];
+
+    selectedDept: Department = new Department();
 
     constructor(
         private notificationService: NotificationService,
@@ -25,8 +28,22 @@ export class DeptManageComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.deptId = '8a808087583fa7b701583faadf300000';
-        this.getPeopleList(this.deptId);
+        this.getAllDepartment();
+    }
+
+    getAllDepartment(): void {
+        this.deptService.getAllDepartment().subscribe(departmentList => {
+            this.deptList = departmentList;
+            this.preHandleDept(this.deptList);
+        });
+    }
+
+    selectDept(e: { option: Department, index: number }): void {
+        this.selectedDept = e.option;
+    }
+
+    _console(value) {
+        console.log(value);
     }
 
     getPeopleList = (deptId: string) => {
@@ -43,7 +60,7 @@ export class DeptManageComponent implements OnInit {
     deletePeople = (people: People) => {
         this.deptService.deletePeople(people.idBfPeople).subscribe(data => {
             this.notificationService.success('删除人员成功');
-            this.getPeopleList(this.deptId);
+            this.getPeopleList(this.selectedDept.idBfDepartment);
         });
     }
 
@@ -59,7 +76,21 @@ export class DeptManageComponent implements OnInit {
         subscription.subscribe(result => {
             if (result === '修改' || result === '新增') {
                 this.notificationService.success(result + '人员信息成功');
-                this.getPeopleList(this.deptId);
+                this.getPeopleList(this.selectedDept.idBfDepartment);
+            }
+        });
+    }
+
+    loadChildDept(e: { option: Department, index: number, resolve: Function, reject: Function }): void {
+        e.resolve(e.option.childDepartmentList);
+    }
+
+    preHandleDept = (deptList: Department[]) => {
+        deptList.forEach(dept => {
+            if (!dept.childDepartmentList || dept.childDepartmentList.length === 0) {
+                dept.isLeaf = true;
+            } else {
+                this.preHandleDept(dept.childDepartmentList);
             }
         });
     }
