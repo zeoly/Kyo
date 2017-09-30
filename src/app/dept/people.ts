@@ -5,5 +5,6 @@ export class People {
     code: string;
     name: string;
     status: string;
+    departmentId: string;
     roleIdList: string[];
 }

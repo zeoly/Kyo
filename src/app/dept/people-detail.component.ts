@@ -68,8 +68,14 @@ export class PeopleDetailComponent implements OnInit {
 
     savePeople(e): void {
         this.people.roleIdList = this.selectedRole;
-        this.deptService.updatePeople(this.people).subscribe(() => {
-            this.closeDetail('修改');
-        });
+        if (this.people.idBfPeople) {
+            this.deptService.updatePeople(this.people).subscribe(() => {
+                this.closeDetail('修改');
+            });
+        } else {
+            this.deptService.addPeople(this.people).subscribe(() => {
+                this.closeDetail('新增');
+            });
+        }
     }
 }

@@ -42,6 +42,10 @@ export class DeptManageComponent implements OnInit {
         this.selectedDept = e.option;
     }
 
+    clearDept(): void {
+        this.selectedDept = new Department();
+    }
+
     _console(value) {
         console.log(value);
     }
@@ -50,6 +54,12 @@ export class DeptManageComponent implements OnInit {
         this.deptService.getPeopleList(deptId).subscribe(peopleList => {
             this.peopleList = peopleList;
         });
+    }
+
+    addPeople(): void {
+        this.people = new People();
+        this.people.departmentId = this.selectedDept.idBfDepartment;
+        this.openPeopleDetail();
     }
 
     modifyPeople = (people: People) => {

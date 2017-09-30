@@ -1,8 +1,9 @@
 <div>
     <nz-cascader [nzOptions]="deptList" [nzValueProperty]="'code'" [nzLabelProperty]="'name'" [nzPlaceHolder]="'请选择机构'" (nzSelect)="selectDept($event)"
-        (nzLoad)="loadChildDept($event)" [nzChangeOnSelect]="true" [nzExpandTrigger]="'hover'">
+        (nzLoad)="loadChildDept($event)" [nzChangeOnSelect]="true" [nzExpandTrigger]="'hover'" (nzClear)="clearDept()">
     </nz-cascader>
     <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="getPeopleList(selectedDept.idBfDepartment)">查 询</button>
+    <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="addPeople(selectedDept.idBfDepartment)">新增人员</button>
 </div>
 <nz-table #nzTable [nzDataSource]="peopleList" [nzPageSize]="10" [nzShowSizeChanger]="true">
     <thead nz-thead>

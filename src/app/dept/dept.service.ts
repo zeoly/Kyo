@@ -23,6 +23,10 @@ export class DeptService {
         return this.http.get(this.PEOPLE_URL + '/' + peopleId + '/role').map(data => data['data'] as Role[]);
     }
 
+    addPeople(people: People): Observable<void> {
+        return this.http.post(this.PEOPLE_URL, people).map(() => null);
+    }
+
     updatePeople(people: People): Observable<void> {
         return this.http.patch(this.PEOPLE_URL, people).map(() => null);
     }
