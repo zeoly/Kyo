@@ -24,6 +24,14 @@ export class PeopleDetailComponent implements OnInit {
 
     validateForm: FormGroup;
 
+    validForm() {
+        for (const i in this.validateForm.controls) {
+            if (this.validateForm.controls[i]) {
+                this.validateForm.controls[i].markAsDirty();
+            }
+        }
+    }
+
     constructor(
         private formBuilder: FormBuilder,
         private modalSubject: NzModalSubject,
@@ -66,16 +74,28 @@ export class PeopleDetailComponent implements OnInit {
         });
     }
 
-    savePeople(e): void {
+    savePeople = (e) => {
+        this.validForm();
+        if (!this.validateForm.valid) {
+            return;
+        }
         this.people.roleIdList = this.selectedRole;
         if (this.people.idBfPeople) {
-            this.deptService.updatePeople(this.people).subscribe(() => {
-                this.closeDetail('修改');
-            });
+            this.modifyPeople(e);
         } else {
-            this.deptService.addPeople(this.people).subscribe(() => {
-                this.closeDetail('新增');
-            });
+            this.addPeople(e);
         }
+    }
+
+    modifyPeople = (e) => {
+        this.deptService.updatePeople(this.people).subscribe(() => {
+            this.closeDetail('修改');
+        });
+    }
+
+    addPeople = (e) => {
+        this.deptService.addPeople(this.people).subscribe(() => {
+            this.closeDetail('新增');
+        });
     }
 }
