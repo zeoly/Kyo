@@ -43,7 +43,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NgZorroAntdModule.forRoot({ extraFontName: 'anticon', extraFontUrl: '../assets/fonts/iconfont' }),
+    NgZorroAntdModule.forRoot({ extraFontName: 'anticon', extraFontUrl: './assets/fonts/iconfont' }),
     AppRoutingModule
   ],
   providers: [
