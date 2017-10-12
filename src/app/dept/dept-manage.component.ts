@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NzModalService } from 'ng-zorro-antd';
 import { NotificationService } from '../shared/notification.service';
+import { DepartmentDetailComponent } from './department-detail.component';
 import { PeopleDetailComponent } from './people-detail.component';
 import { DeptService } from './dept.service';
 import { Department } from './department';
@@ -103,5 +104,36 @@ export class DeptManageComponent implements OnInit {
                 this.preHandleDept(dept.childDepartmentList);
             }
         });
+    }
+
+    addDepartment = () => {
+        this.openDepartmentDetail(new Department(), this.selectedDept);
+    }
+
+    openDepartmentDetail = (department: Department, parentDepartment: Department) => {
+        let dept: Department = new Department();
+        let parentDept: Department = new Department();
+        dept = Object.assign(dept, department);
+        dept.parent = null;
+        parentDept = Object.assign(parentDept, parentDepartment);
+        const subscription = this.modalService.open({
+            title: '机构信息详情',
+            content: DepartmentDetailComponent,
+            footer: false,
+            componentParams: {
+                department: dept,
+                parentDepartment: parentDept
+            }
+        });
+        subscription.subscribe(result => {
+            if (result === '修改' || result === '新增') {
+                this.notificationService.success(result + '机构信息成功');
+                this.getAllDepartment();
+            }
+        });
+    }
+
+    modifyDepartment = () => {
+        this.openDepartmentDetail(this.selectedDept, this.selectedDept.parent);
     }
 }

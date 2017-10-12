@@ -3,15 +3,26 @@
         (nzLoad)="loadChildDept($event)" [nzChangeOnSelect]="true" [nzExpandTrigger]="'hover'" (nzClear)="clearDept()">
     </nz-cascader>
     <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="getPeopleList(selectedDept.idBfDepartment)">查 询</button>
+    <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="modifyDepartment()">修改机构</button>
+    <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="deleteDepartment(selectedDept.idBfDepartment)">删除机构</button>
     <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="addPeople(selectedDept.idBfDepartment)">新增人员</button>
+    <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="addDepartment()">新增子机构</button>
 </div>
 <nz-table #nzTable [nzDataSource]="peopleList" [nzPageSize]="10" [nzShowSizeChanger]="true">
     <thead nz-thead>
         <tr>
-            <th nz-th><span>人员代码</span></th>
-            <th nz-th><span>姓名</span></th>
-            <th nz-th><span>状态</span></th>
-            <th nz-th><span>操作</span></th>
+            <th nz-th>
+                <span>人员代码</span>
+            </th>
+            <th nz-th>
+                <span>姓名</span>
+            </th>
+            <th nz-th>
+                <span>状态</span>
+            </th>
+            <th nz-th>
+                <span>操作</span>
+            </th>
         </tr>
     </thead>
     <tbody nz-tbody>

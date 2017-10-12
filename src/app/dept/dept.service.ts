@@ -38,4 +38,16 @@ export class DeptService {
     getAllDepartment(): Observable<Department[]> {
         return this.http.get(this.DEPT_URL).map(data => [data['data']] as Department[]);
     }
+
+    addDepartment(department: Department): Observable<void> {
+        return this.http.post(this.DEPT_URL, department).map(() => null);
+    }
+
+    modifyDepartment(department: Department): Observable<void> {
+        return this.http.patch(this.DEPT_URL, department).map(() => null);
+    }
+
+    deleteDepartment(departmentId: string): Observable<void> {
+        return this.http.delete(this.DEPT_URL + '/' + departmentId).map(() => null);
+    }
 }

@@ -6,12 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, Http, RequestOptions, XHRBackend } from '@angular/http';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { NzMessageService } from 'ng-zorro-antd';
+import { NgZorroAntdModule, NzMessageService } from 'ng-zorro-antd';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DeptManageComponent } from './dept/dept-manage.component';
+import { DepartmentDetailComponent } from './dept/department-detail.component';
 import { PeopleDetailComponent } from './dept/people-detail.component';
 import { RoleComponent } from './role/role.component';
 import { RoleDetailComponent } from './role/role-detail.component';
@@ -30,11 +30,13 @@ import { AppRoutingModule } from './app-routing.module';
     RoleDetailComponent,
     DashboardComponent,
     DeptManageComponent,
+    DepartmentDetailComponent,
     PeopleDetailComponent
   ],
   entryComponents: [
     RoleDetailComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    DepartmentDetailComponent
   ],
   imports: [
     BrowserModule,

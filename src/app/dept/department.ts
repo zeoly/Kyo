@@ -3,6 +3,8 @@ export class Department {
     code: string;
     name: string;
     level: number;
+    parentDepartmentId: string;
     childDepartmentList: Department[];
     isLeaf: boolean;
+    parent: Department;
 }
