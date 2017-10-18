@@ -136,4 +136,11 @@ export class DeptManageComponent implements OnInit {
     modifyDepartment = () => {
         this.openDepartmentDetail(this.selectedDept, this.selectedDept.parent);
     }
+
+    deleteDepartment = () => {
+        this.deptService.deleteDepartment(this.selectedDept.idBfDepartment).subscribe(data => {
+            this.notificationService.success('删除机构成功');
+            this.getAllDepartment();
+        });
+    }
 }

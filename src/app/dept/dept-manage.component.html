@@ -4,7 +4,9 @@
     </nz-cascader>
     <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="getPeopleList(selectedDept.idBfDepartment)">查 询</button>
     <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="modifyDepartment()">修改机构</button>
-    <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="deleteDepartment(selectedDept.idBfDepartment)">删除机构</button>
+    <nz-popconfirm *ngIf="selectedDept.idBfDepartment" [nzTitle]="'确定要删除机构吗？'" (nzOnConfirm)="deleteDepartment()">
+        <button nz-button nz-popconfirm [nzType]="'primary'" [nzSize]="'large'">删除机构</button>
+    </nz-popconfirm>
     <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="addPeople(selectedDept.idBfDepartment)">新增人员</button>
     <button nz-button *ngIf="selectedDept.idBfDepartment" [nzType]="'primary'" [nzSize]="'large'" (click)="addDepartment()">新增子机构</button>
 </div>
