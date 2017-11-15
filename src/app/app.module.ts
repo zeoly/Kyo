@@ -22,6 +22,10 @@ import { RoleService } from './role/role.service';
 import { DeptService } from './dept/dept.service';
 // import { HttpInterceptor } from './http-interceptor.service';
 import { AppRoutingModule } from './app-routing.module';
+import { ReportComponent } from './claim/report.component';
+import { ReviewComponent } from './claim/review.component';
+import { CommonModule } from '@angular/common';
+import { FileUploadModule } from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -31,7 +35,9 @@ import { AppRoutingModule } from './app-routing.module';
     DashboardComponent,
     DeptManageComponent,
     DepartmentDetailComponent,
-    PeopleDetailComponent
+    PeopleDetailComponent,
+    ReportComponent,
+    ReviewComponent
   ],
   entryComponents: [
     RoleDetailComponent,
@@ -45,6 +51,8 @@ import { AppRoutingModule } from './app-routing.module';
     HttpModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    CommonModule,
+    FileUploadModule,
     NgZorroAntdModule.forRoot({ extraFontName: 'anticon', extraFontUrl: './assets/fonts/iconfont' }),
     AppRoutingModule
   ],
