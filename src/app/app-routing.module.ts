@@ -5,6 +5,7 @@ import { RoleComponent } from './role/role.component';
 import { DeptManageComponent } from './dept/dept-manage.component';
 import { ReportComponent } from './claim/report.component';
 import { ReviewComponent } from './claim/review.component';
+import { HistoryComponent } from './claim/history.component';
 
 const routes: Routes = [
     {
@@ -23,6 +24,9 @@ const routes: Routes = [
     }, {
         path: 'report',
         component: ReportComponent
+    }, {
+        path: 'history',
+        component: HistoryComponent
     }, {
         path: 'review',
         component: ReviewComponent
