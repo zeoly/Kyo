@@ -27,6 +27,7 @@ import { ReviewComponent } from './claim/review.component';
 import { CommonModule } from '@angular/common';
 import { FileUploadModule } from 'ng2-file-upload';
 import { HistoryComponent } from './claim/history.component';
+import { ClaimService } from './claim/claim.service';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { HistoryComponent } from './claim/history.component';
     },
     NotificationService,
     RoleService,
-    DeptService
+    DeptService,
+    ClaimService
   ],
   bootstrap: [AppComponent]
 })

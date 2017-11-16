@@ -1,62 +1,93 @@
-<input type="file" ng2FileSelect [uploader]="uploader" multiple />
-
-<div class="col-md-9" style="margin-bottom: 40px">
-    <nz-table #nzTable [nzDataSource]="uploader.queue" [nzShowTitle]="true" [nzPageSize]="10">
-        <span nz-table-title>上传队列</span>
-        <thead nz-thead>
-            <tr>
-                <th nz-th width="50%">文件名</th>
-                <th nz-th>文件大小</th>
-                <th nz-th width="20%">进度</th>
-                <th nz-th>状态</th>
-                <th nz-th>操作</th>
-            </tr>
-        </thead>
-        <tbody nz-tbody>
-            <tr nz-tbody-tr *ngFor="let item of uploader.queue">
-                <td nz-td>
-                    <strong>{{ item?.file?.name }}</strong>
-                </td>
-                <td nz-td nowrap>{{ item?.file?.size/1024 | number:'.2' }} KB</td>
-                <td nz-td>
-                    <nz-progress [ngModel]="item.progress"></nz-progress>
-                </td>
-                <td nz-td class="text-center">
-                    <span *ngIf="item.isSuccess">
-                        <i class="anticon anticon-check"></i>
-                    </span>
-                    <span *ngIf="item.isCancel">
-                        <i class="anticon anticon-close"></i>
-                    </span>
-                    <span *ngIf="item.isError">
-                        <i class="anticon anticon-exclamation-circle-o"></i>
-                    </span>
-                </td>
-                <td nz-td nowrap>
-                    <a (click)="item.upload()">
-                        <i class="anticon anticon-upload"></i>
-                    </a>&nbsp;&nbsp;
-                    <!-- <a (click)="item.cancel()">
+<form nz-form [nzLayout]="'inline'" [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="validateForm.controls.reporterName">
+            <nz-input [(ngModel)]="claim.reporterName" formControlName="reporterName" [nzPlaceHolder]="'姓名'" [nzSize]="'large'" [nzDisabled]="isReady">
+                <ng-template #prefix>
+                    <i class="anticon anticon-user"></i>
+                </ng-template>
+            </nz-input>
+            <div nz-form-explain *ngIf="validateForm.controls.reporterName.dirty&&validateForm.controls.reporterName.hasError('required')">请输入姓名！</div>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div nz-form-control [nzValidateStatus]="validateForm.controls.reporterPhone">
+            <nz-input [(ngModel)]="claim.reporterPhone" formControlName="reporterPhone" [nzPlaceHolder]="'手机号'" [nzSize]="'large'" [nzDisabled]="isReady">
+                <ng-template #prefix>
+                    <i class="anticon anticon-phone"></i>
+                </ng-template>
+            </nz-input>
+            <div nz-form-explain *ngIf="validateForm.controls.reporterPhone.dirty&&validateForm.controls.reporterPhone.hasError('required')">请输入手机号</div>
+        </div>
+    </div>
+    <div nz-form-item>
+        <div *ngIf="!isReady" nz-form-control>
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="next()">下一步</button>
+        </div>
+        <div *ngIf="isReady&&claim.documentGroupNo" nz-form-control>
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="submit()">提  交</button>
+        </div>
+    </div>
+</form>
+<div *ngIf="isReady">
+    <input type="file" ng2FileSelect [uploader]="uploader" multiple />
+    <div class="col-md-9" style="margin-bottom: 40px">
+        <nz-table #nzTable [nzDataSource]="uploader.queue" [nzShowTitle]="true" [nzPageSize]="10">
+            <span nz-table-title>上传队列</span>
+            <thead nz-thead>
+                <tr>
+                    <th nz-th width="50%">文件名</th>
+                    <th nz-th>文件大小</th>
+                    <th nz-th width="20%">进度</th>
+                    <th nz-th>状态</th>
+                    <th nz-th>操作</th>
+                </tr>
+            </thead>
+            <tbody nz-tbody>
+                <tr nz-tbody-tr *ngFor="let item of uploader.queue">
+                    <td nz-td>
+                        <strong>{{ item?.file?.name }}</strong>
+                    </td>
+                    <td nz-td nowrap>{{ item?.file?.size/1024 | number:'.2' }} KB</td>
+                    <td nz-td>
+                        <nz-progress [ngModel]="item.progress"></nz-progress>
+                    </td>
+                    <td nz-td class="text-center">
+                        <span *ngIf="item.isSuccess">
+                            <i class="anticon anticon-check"></i>
+                        </span>
+                        <span *ngIf="item.isCancel">
+                            <i class="anticon anticon-close"></i>
+                        </span>
+                        <span *ngIf="item.isError">
+                            <i class="anticon anticon-exclamation-circle-o"></i>
+                        </span>
+                    </td>
+                    <td nz-td nowrap>
+                        <a (click)="item.upload()">
+                            <i class="anticon anticon-upload"></i>
+                        </a>&nbsp;&nbsp;
+                        <!-- <a (click)="item.cancel()">
                         <i class="anticon anticon-close-circle"></i>
                     </a>&nbsp;&nbsp; -->
-                    <a (click)="item.remove()">
-                        <i class="anticon anticon-delete"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </nz-table>
+                        <a (click)="item.remove()">
+                            <i class="anticon anticon-delete"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
 
-    <div>
-        <button nz-button [nzType]="'primary'" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
-            <i class="anticon anticon-upload"></i> 全部上传
-        </button>
-        <!-- <button nz-button [nzType]="'default'" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+        <div>
+            <button nz-button [nzType]="'primary'" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
+                <i class="anticon anticon-upload"></i> 全部上传
+            </button>
+            <!-- <button nz-button [nzType]="'default'" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
             <i class="anticon anticon-close-circle-o"></i> 全部取消
         </button> -->
-        <button nz-button [nzType]="'danger'" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
-            <i class="anticon anticon-delete"></i> 删除所有
-        </button>
-    </div>
+            <button nz-button [nzType]="'danger'" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
+                <i class="anticon anticon-delete"></i> 删除所有
+            </button>
+        </div>
 
+    </div>
 </div>
