@@ -26,6 +26,7 @@ import { ReportComponent } from './claim/report.component';
 import { ReviewComponent } from './claim/review.component';
 import { CommonModule } from '@angular/common';
 import { FileUploadModule } from 'ng2-file-upload';
+import { HistoryComponent } from './claim/history.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     DepartmentDetailComponent,
     PeopleDetailComponent,
     ReportComponent,
+    HistoryComponent,
     ReviewComponent
   ],
   entryComponents: [

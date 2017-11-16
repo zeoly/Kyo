@@ -1,8 +1,8 @@
 <input type="file" ng2FileSelect [uploader]="uploader" multiple />
 
 <div class="col-md-9" style="margin-bottom: 40px">
-    <h3>上传队列</h3>
-    <nz-table #nzTable [nzDataSource]="uploader.queue" [nzPageSize]="10">
+    <nz-table #nzTable [nzDataSource]="uploader.queue" [nzShowTitle]="true" [nzPageSize]="10">
+        <span nz-table-title>上传队列</span>
         <thead nz-thead>
             <tr>
                 <th nz-th width="50%">文件名</th>
@@ -36,9 +36,9 @@
                     <a (click)="item.upload()">
                         <i class="anticon anticon-upload"></i>
                     </a>&nbsp;&nbsp;
-                    <a (click)="item.cancel()">
+                    <!-- <a (click)="item.cancel()">
                         <i class="anticon anticon-close-circle"></i>
-                    </a>&nbsp;&nbsp;
+                    </a>&nbsp;&nbsp; -->
                     <a (click)="item.remove()">
                         <i class="anticon anticon-delete"></i>
                     </a>
@@ -51,9 +51,9 @@
         <button nz-button [nzType]="'primary'" (click)="uploader.uploadAll()" [disabled]="!uploader.getNotUploadedItems().length">
             <i class="anticon anticon-upload"></i> 全部上传
         </button>
-        <button nz-button [nzType]="'default'" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
+        <!-- <button nz-button [nzType]="'default'" (click)="uploader.cancelAll()" [disabled]="!uploader.isUploading">
             <i class="anticon anticon-close-circle-o"></i> 全部取消
-        </button>
+        </button> -->
         <button nz-button [nzType]="'danger'" (click)="uploader.clearQueue()" [disabled]="!uploader.queue.length">
             <i class="anticon anticon-delete"></i> 删除所有
         </button>

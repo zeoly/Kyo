@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
 
-const URL = 'SDF';
+const URL = 'http://localhost:8081/claim/';
 
 @Component({
     selector: 'app-report',
