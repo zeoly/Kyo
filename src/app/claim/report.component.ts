@@ -4,7 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ClaimService } from './claim.service';
 import { Claim } from './claim';
 
-const URL = 'http://localhost:8081/docgroup/';
+const URL = 'http://localhost:8081/document/group/';
 
 @Component({
     selector: 'app-report',
