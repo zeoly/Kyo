@@ -1,32 +1,10 @@
-<nz-table #nzTable [nzDataSource]="taskList" [nzPageSize]="10" [nzShowSizeChanger]="true">
-    <thead nz-thead>
-        <tr>
-            <th nz-th>
-                <span></span>
-            </th>
-            <th nz-th>
-                <span>提交时间</span>
-            </th>
-            <th nz-th>
-                <span>状态</span>
-            </th>
-            <th nz-th>
-                <span>操作</span>
-            </th>
-        </tr>
-    </thead>
-    <tbody nz-tbody>
-        <tr nz-tbody-tr *ngFor="let people of nzTable.data">
-            <td nz-td>{{people.code}}</td>
-            <td nz-td>{{people.name}}</td>
-            <td nz-td>{{people.status}}</td>
-            <td nz-td>
-                <a class="anticon anticon-edit" (click)="modifyPeople(people)">修 改</a>
-                <span nz-table-divider></span>
-                <nz-popconfirm [nzTitle]="'确定要删除人员吗？'" (nzOnConfirm)="deletePeople(people)">
-                    <a nz-popconfirm class="anticon anticon-close">删 除</a>
-                </nz-popconfirm>
-            </td>
-        </tr>
-    </tbody>
-</nz-table>
+<nz-card [nzNoHovering]="true" [nzBordered]="false">
+    <ng-template #title>图片</ng-template>
+    <ng-template #body>
+        <div nz-card-grid [ngStyle]="gridStyle" *ngFor="let doc of documents">
+            <a [title]="doc.name">
+                <img alt="example" width="100%" height="200px" [src]="doc.url" (click)="openNew(doc.url)" />
+            </a>
+        </div>
+    </ng-template>
+</nz-card>
