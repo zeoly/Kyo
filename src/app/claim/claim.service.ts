@@ -21,4 +21,8 @@ export class ClaimService {
         return this.http.get(this.URL_DOCUMENT + groupNo).map(data => data['data'] as Document[]);
     }
 
+    getClaimList(): Observable<Claim[]> {
+        return this.http.get(this.URL_REPORT).map(data => data['data'] as Claim[]);
+    }
+
 }

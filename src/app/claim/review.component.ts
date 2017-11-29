@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClaimService } from './claim.service';
 import { Document } from './document';
+import { Claim } from './claim';
 
 @Component({
     selector: 'app-review',
@@ -10,6 +11,8 @@ import { Document } from './document';
 export class ReviewComponent implements OnInit {
 
     documents: Document[] = [];
+
+    claimList: Claim[] = [];
 
     gridStyle = {
         width: '25%',
@@ -27,6 +30,10 @@ export class ReviewComponent implements OnInit {
             this.documents.forEach(doc => {
                 doc.url = 'http://localhost:8081' + doc.url;
             });
+        });
+
+        this.claimService.getClaimList().subscribe(claimList => {
+            this.claimList = claimList;
         });
     }
 
