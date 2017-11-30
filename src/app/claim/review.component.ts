@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ClaimService } from './claim.service';
 import { Document } from './document';
 import { Claim } from './claim';
+import { NzModalService } from 'ng-zorro-antd';
+import { ClaimDetailComponent } from './claim-detail.component';
 
 @Component({
     selector: 'app-review',
@@ -10,34 +12,28 @@ import { Claim } from './claim';
 
 export class ReviewComponent implements OnInit {
 
-    documents: Document[] = [];
-
     claimList: Claim[] = [];
 
-    gridStyle = {
-        width: '25%',
-        textAlign: 'center',
-        height: '200px',
-        overflow: 'hidden',
-    };
-
-    constructor(private claimService: ClaimService) { }
+    constructor(
+        private claimService: ClaimService,
+        private modalService: NzModalService
+    ) { }
 
     ngOnInit(): void {
-        this.claimService.getDocuments('1da5f207-11a2-4e40-beb7-cf1dbed11fa7').subscribe(documents => {
-            console.log(documents);
-            this.documents = documents;
-            this.documents.forEach(doc => {
-                doc.url = 'http://localhost:8081' + doc.url;
-            });
-        });
-
         this.claimService.getClaimList().subscribe(claimList => {
             this.claimList = claimList;
         });
     }
 
-    openNew(url: string): void {
-        window.open(url);
+    openClaimDetail(claim: Claim): void {
+        const subscription = this.modalService.open({
+            title: '审核详情',
+            width: 1200,
+            content: ClaimDetailComponent,
+            footer: false,
+            componentParams: {
+                claim: claim
+            }
+        });
     }
 }

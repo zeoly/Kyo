@@ -28,6 +28,7 @@ import { CommonModule } from '@angular/common';
 import { FileUploadModule } from 'ng2-file-upload';
 import { HistoryComponent } from './claim/history.component';
 import { ClaimService } from './claim/claim.service';
+import { ClaimDetailComponent } from './claim/claim-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,12 +41,14 @@ import { ClaimService } from './claim/claim.service';
     PeopleDetailComponent,
     ReportComponent,
     HistoryComponent,
-    ReviewComponent
+    ReviewComponent,
+    ClaimDetailComponent
   ],
   entryComponents: [
     RoleDetailComponent,
     PeopleDetailComponent,
-    DepartmentDetailComponent
+    DepartmentDetailComponent,
+    ClaimDetailComponent
   ],
   imports: [
     BrowserModule,

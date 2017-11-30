@@ -1,0 +1,10 @@
+<nz-card [nzNoHovering]="true" [nzBordered]="false">
+    <ng-template #title>图片</ng-template>
+    <ng-template #body>
+        <div nz-card-grid [ngStyle]="gridStyle" *ngFor="let doc of documents">
+            <a [title]="doc.name">
+                <img alt="example" width="100%" height="200px" [src]="doc.url" (click)="openNew(doc.url)" />
+            </a>
+        </div>
+    </ng-template>
+</nz-card>
