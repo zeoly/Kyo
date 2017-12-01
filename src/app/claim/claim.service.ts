@@ -7,7 +7,7 @@ import { Document } from './document';
 @Injectable()
 export class ClaimService {
 
-    private URL_REPORT = '/claim';
+    private URL_REPORT = '/claim/report';
 
     private URL_DOCUMENT = '/document/group/';
 
