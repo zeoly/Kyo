@@ -29,6 +29,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { HistoryComponent } from './claim/history.component';
 import { ClaimService } from './claim/claim.service';
 import { ClaimDetailComponent } from './claim/claim-detail.component';
+import { ExpenseComponent } from './estate/expense.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { ClaimDetailComponent } from './claim/claim-detail.component';
     ReportComponent,
     HistoryComponent,
     ReviewComponent,
-    ClaimDetailComponent
+    ClaimDetailComponent,
+    ExpenseComponent
   ],
   entryComponents: [
     RoleDetailComponent,

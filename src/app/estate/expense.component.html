@@ -1,0 +1,94 @@
+<h1>深圳二手房交易费用计算</h1>
+&nbsp;
+<form nz-form [formGroup]="validateForm" (ngSubmit)="_submitForm()">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="total" nz-form-item-required>计税总价(过户价)</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('total')">
+            <nz-input [nzSize]="'large'" formControlName="total" [nzId]="'total'" [(ngModel)]="total"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('total').dirty&&getFormControl('total').hasError('required')">请输入计税总价!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="buy" nz-form-item-required>卖家购买价</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('buy')">
+            <nz-input [nzSize]="'large'" formControlName="buy" [nzId]="'buy'" [(ngModel)]="buy"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('buy').dirty&&getFormControl('buy').hasError('required')">请输入卖家购买价!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="debt" nz-form-item-required>卖家欠款</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('debt')">
+            <nz-input [nzSize]="'large'" formControlName="debt" [nzId]="'debt'" [(ngModel)]="debt"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('debt').dirty&&getFormControl('debt').hasError('required')">请输入欠款!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="area" nz-form-item-required>面积</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('area')">
+            <nz-select formControlName="area" [nzSize]="'large'" [(ngModel)]="area">
+                <nz-option [nzLabel]="'90平米以下'" [nzValue]="'0'"></nz-option>
+                <nz-option [nzLabel]="'90平米以上,144平米以下'" [nzValue]="'1'"></nz-option>
+                <nz-option [nzLabel]="'144平米以上'" [nzValue]="'2'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('area').dirty&&getFormControl('area').hasError('required')">请选择!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="year" nz-form-item-required>满几年</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('year')">
+            <nz-select formControlName="year" [nzSize]="'large'" [(ngModel)]="year">
+                <nz-option [nzLabel]="'未满两年'" [nzValue]="'0'"></nz-option>
+                <nz-option [nzLabel]="'满两年未满五年'" [nzValue]="'1'"></nz-option>
+                <nz-option [nzLabel]="'满五年'" [nzValue]="'2'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('year').dirty&&getFormControl('year').hasError('required')">请选择!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="barrier" nz-form-item-required>关内外</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('barrier')">
+            <nz-select formControlName="barrier" [nzSize]="'large'" [(ngModel)]="barrier">
+                <nz-option [nzLabel]="'关内'" [nzValue]="'0'"></nz-option>
+                <nz-option [nzLabel]="'关外'" [nzValue]="'1'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('barrier').dirty&&getFormControl('barrier').hasError('required')">请选择!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6" [nzXs]="24">
+            <label for="first" nz-form-item-required>是否首套</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('first')">
+            <nz-select formControlName="first" [nzSize]="'large'" [(ngModel)]="first">
+                <nz-option [nzLabel]="'首套房'" [nzValue]="'0'"></nz-option>
+                <nz-option [nzLabel]="'二套及以上'" [nzValue]="'1'"></nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('first').dirty&&getFormControl('first').hasError('required')">请选择!</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-control nz-col [nzSpan]="12" [nzOffset]="6">
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'">计 算</button>
+        </div>
+    </div>
+</form>
+&nbsp;
+<h2>费用明细</h2>
+<table>
+    <tr *ngFor="let expense of expenses">
+        <td>{{expense.name}}</td>
+        <td>{{expense.amount}}</td>
+    </tr>
+</table>

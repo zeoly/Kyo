@@ -1,11 +1,11 @@
 <nz-layout class="layout">
   <nz-header>
     <h1 style="color:#fff;float: left" [routerLink]="['home']">宇宙无敌什么玩意系统</h1>
-    <h2 class="av" style="color:#fff">Hello, USER!</h2>    
+    <h2 class="av" style="color:#fff">Hello, USER!</h2>
     <nz-avatar nzSize="large" nzText="USER"></nz-avatar>
   </nz-header>
   <nz-layout>
-    <nz-sider [nzWidth]="200" style="background:#fff">
+    <nz-sider nzCollapsible [nzWidth]="200" style="background:#fff">
       <ul nz-menu [nzMode]="'inline'" style="height:100%">
         <li nz-submenu [nzOpen]="true">
           <span title>
@@ -31,6 +31,13 @@
           <ul>
             <li nz-menu-item>路径管理</li>
             <li nz-menu-item>文件协作</li>
+          </ul>
+        </li>
+        <li nz-submenu [nzOpen]="true">
+          <span title>
+            <i class="anticon anticon-file"></i>自有模块</span>
+          <ul>
+            <li nz-menu-item [routerLink]="['expense']">税费计算</li>
           </ul>
         </li>
       </ul>
