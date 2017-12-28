@@ -5,8 +5,8 @@
     <nz-avatar nzSize="large" nzText="USER"></nz-avatar>
   </nz-header>
   <nz-layout>
-    <nz-sider nzCollapsible [nzWidth]="200" style="background:#fff">
-      <ul nz-menu [nzMode]="'inline'" style="height:100%">
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzCollapsedWidth]="32" [nzWidth]="200" style="background:#fff">
+      <ul nz-menu [nzMode]="isCollapsed?'vertical':'inline'" style="height:100%">
         <li nz-submenu [nzOpen]="true">
           <span title>
             <i class="anticon anticon-user"></i>系统管理</span>

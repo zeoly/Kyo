@@ -18,7 +18,7 @@ export class ExpenseComponent implements OnInit {
     debt = 1800000;
     year = '1';
     area = '0';
-    barrier = '0';
+    barrier = '1';
     first = '0';
 
     _submitForm() {
@@ -84,9 +84,35 @@ export class ExpenseComponent implements OnInit {
         e.name = '个人所得税';
         if (this.year === '2') {
             e.amount = 0;
+        } if (this.area === '2') {
+            e.amount = (this.total - this.expenses[0].amount) * 0.015;
         } else {
-            e.amount = (this.total - this.expenses[0].amount) * 0.01;
+            if (this.barrier === '0' && this.total > 3900000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else if (this.barrier === '1' && this.total > 2800000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else if (this.barrier === '2' && this.total > 4700000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else if (this.barrier === '3' && this.total > 4900000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else if (this.barrier === '4' && this.total > 3300000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else if (this.barrier === '5' && this.total > 3600000) {
+                e.amount = (this.total - this.expenses[0].amount) * 0.015;
+            } else {
+                e.amount = (this.total - this.expenses[0].amount) * 0.01;
+            }
         }
+        this.expenses.push(e);
+
+        e = new Expense();
+        e.name = '按揭服务费';
+        e.amount = 3000;
+        this.expenses.push(e);
+
+        e = new Expense();
+        e.name = '评估费';
+        e.amount = this.total * 0.0005;
         this.expenses.push(e);
 
         e = new Expense();

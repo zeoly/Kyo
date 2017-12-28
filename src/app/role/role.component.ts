@@ -31,6 +31,8 @@ export class RoleComponent implements OnInit {
     fetchRoleList = () => {
         this.roleService.getRoles().subscribe(data => {
             this.roles = data;
+        }, err => {
+            this.notificationService.error('获取角色列表失败');
         });
     }
 

@@ -9,6 +9,11 @@ export class NotificationService {
     ) { }
 
     success = (msg: string) => {
-        this.message.create('success', msg);
+        this.message.success(msg);
     }
+
+    error = (msg: string) => {
+        this.message.error(msg, { nzDuration: 5000 });
+    }
+
 }
