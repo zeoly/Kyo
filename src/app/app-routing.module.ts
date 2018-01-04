@@ -7,6 +7,7 @@ import { ReportComponent } from './claim/report.component';
 import { ReviewComponent } from './claim/review.component';
 import { HistoryComponent } from './claim/history.component';
 import { ExpenseComponent } from './estate/expense.component';
+import { DocumentComponent } from './document/document.component';
 
 const routes: Routes = [
     {
@@ -31,6 +32,9 @@ const routes: Routes = [
     }, {
         path: 'review',
         component: ReviewComponent
+    }, {
+        path: 'document',
+        component: DocumentComponent
     }, {
         path: 'expense',
         component: ExpenseComponent

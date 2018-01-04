@@ -30,6 +30,7 @@ import { HistoryComponent } from './claim/history.component';
 import { ClaimService } from './claim/claim.service';
 import { ClaimDetailComponent } from './claim/claim-detail.component';
 import { ExpenseComponent } from './estate/expense.component';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ExpenseComponent } from './estate/expense.component';
     HistoryComponent,
     ReviewComponent,
     ClaimDetailComponent,
+    DocumentComponent,
     ExpenseComponent
   ],
   entryComponents: [
