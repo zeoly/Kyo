@@ -1,12 +1,13 @@
-.ant-avatar {
-    margin-top: 14px;
-    float: right;
+
+.header-right {
+  float: right;
+  padding-right: 15px;
+  height: 100%;
 }
 
-.av {
-    margin-top: 4px;
-    margin-left: 5px;
-    float: right;
+.header-float{
+  float: left;
+  padding-right: 10px;
 }
 
 :host ::ng-deep .logo {
