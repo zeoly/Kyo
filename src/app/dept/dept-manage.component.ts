@@ -36,6 +36,8 @@ export class DeptManageComponent implements OnInit {
         this.deptService.getAllDepartment().subscribe(departmentList => {
             this.deptList = departmentList;
             this.preHandleDept(this.deptList);
+        }, err => {
+            this.notificationService.error('获取机构数据失败');
         });
     }
 
