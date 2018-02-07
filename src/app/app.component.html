@@ -1,72 +1,71 @@
 <nz-layout style="height:100%">
-  <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" style="height:100%">
-    <div class="logo">
-    </div>
-    <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
-      <li nz-submenu [nzOpen]="true">
-        <span title>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" style="height:100%">
+        <div class="logo">
+        </div>
+        <ul nz-menu [nzTheme]="'dark'" [nzMode]="isCollapsed?'vertical':'inline'">
+            <li nz-submenu [nzOpen]="true">
+                <span title>
           <i class="anticon anticon-user"></i>
           <span class="nav-text">系统管理</span>
-        </span>
-        <ul>
-          <li nz-menu-item [routerLink]="['dept']">组织架构</li>
-          <li nz-menu-item [routerLink]="['role']">角色管理</li>
-          <li nz-menu-item>角色权限管理</li>
-        </ul>
-      </li>
-      <li nz-submenu [nzOpen]="true">
-        <span title>
+                </span>
+                <ul>
+                    <li nz-menu-item [routerLink]="['dept']">组织架构</li>
+                    <li nz-menu-item [routerLink]="['role']">角色管理</li>
+                    <li nz-menu-item>角色权限管理</li>
+                </ul>
+            </li>
+            <li nz-submenu [nzOpen]="true">
+                <span title>
           <i class="anticon anticon-car"></i>
           <span class="nav-text">理赔管理</span>
-        </span>
-        <ul>
-          <li nz-menu-item [routerLink]="['report']">我要报案</li>
-          <li nz-menu-item [routerLink]="['history']">报案历史</li>
-          <li nz-menu-item [routerLink]="['review']">业务审批</li>
-        </ul>
-      </li>
-      <li nz-submenu [nzOpen]="true">
-        <span title>
+                </span>
+                <ul>
+                    <li nz-menu-item [routerLink]="['report']">我要报案</li>
+                    <li nz-menu-item [routerLink]="['history']">报案历史</li>
+                    <li nz-menu-item [routerLink]="['review']">业务审批</li>
+                </ul>
+            </li>
+            <li nz-submenu [nzOpen]="true">
+                <span title>
           <i class="anticon anticon-file"></i>
           <span class="nav-text">文件管理</span>
-        </span>
-        <ul>
-          <li nz-menu-item>路径管理</li>
-          <li nz-menu-item [routerLink]="['document']">文件协作</li>
-        </ul>
-      </li>
-      <li nz-submenu [nzOpen]="true">
-        <span title>
-          <i class="anticon anticon-file"></i>
+                </span>
+                <ul>
+                    <li nz-menu-item>路径管理</li>
+                    <li nz-menu-item [routerLink]="['document']">文件协作</li>
+                </ul>
+            </li>
+            <li nz-submenu [nzOpen]="true">
+                <span title>
+          <i class="anticon anticon-home"></i>
           <span class="nav-text">自有模块</span>
-        </span>
-        <ul>
-          <li nz-menu-item [routerLink]="['expense']">税费计算</li>
+                </span>
+                <ul>
+                    <li nz-menu-item [routerLink]="['expense']">税费计算</li>
+                </ul>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </nz-sider>
-  <nz-layout>
-    <nz-header style="background: #fff; padding:0;">
-      <i class="anticon trigger" style="padding:10px;float: left" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed"
-        (click)="isCollapsed=!isCollapsed"></i>
-      <h1 style="color:#333;float: left" [routerLink]="['home']">宇宙无敌什么玩意系统</h1>
-      <ul class="header-right">
-        <li class="header-float">
-          <h2>Hello, USER!</h2>
-        </li>
-        <li class="header-float">
-          <nz-avatar nzSize="large" nzText="USER"></nz-avatar>
-        </li>
-      </ul>
-    </nz-header>
-    <nz-content style="margin:0 16px;">
-      <nz-breadcrumb style="margin:12px 0;" [nzSeparator]="'>'">
-        <nz-breadcrumb-item>系统管理</nz-breadcrumb-item>
-        <nz-breadcrumb-item>角色管理</nz-breadcrumb-item>
-      </nz-breadcrumb>
-      <router-outlet></router-outlet>
-    </nz-content>
-    <nz-footer style="text-align: center;">Copyright by YahaCode Dev Group</nz-footer>
-  </nz-layout>
+    </nz-sider>
+    <nz-layout>
+        <nz-header style="background: #fff; padding:0;">
+            <i class="anticon trigger" style="padding:10px;float: left" [class.anticon-menu-fold]="!isCollapsed" [class.anticon-menu-unfold]="isCollapsed" (click)="isCollapsed=!isCollapsed"></i>
+            <h1 style="color:#333;float: left" [routerLink]="['home']">宇宙无敌什么玩意系统</h1>
+            <ul class="header-right">
+                <li class="header-float">
+                    <h2>Hello, USER!</h2>
+                </li>
+                <li class="header-float">
+                    <nz-avatar nzSize="large" nzText="USER"></nz-avatar>
+                </li>
+            </ul>
+        </nz-header>
+        <nz-content style="margin:0 16px;">
+            <nz-breadcrumb style="margin:12px 0;" [nzSeparator]="'>'">
+                <nz-breadcrumb-item>系统管理</nz-breadcrumb-item>
+                <nz-breadcrumb-item>角色管理</nz-breadcrumb-item>
+            </nz-breadcrumb>
+            <router-outlet></router-outlet>
+        </nz-content>
+        <nz-footer style="text-align: center;">Copyright by YahaCode Dev Group</nz-footer>
+    </nz-layout>
 </nz-layout>
