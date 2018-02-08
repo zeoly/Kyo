@@ -8,6 +8,7 @@ import { ReviewComponent } from './claim/review.component';
 import { HistoryComponent } from './claim/history.component';
 import { ExpenseComponent } from './estate/expense.component';
 import { DocumentComponent } from './document/document.component';
+import { LoggedInGuard } from './shared/logged-in.guard';
 
 const routes: Routes = [
     {
@@ -16,10 +17,12 @@ const routes: Routes = [
         pathMatch: 'full'
     }, {
         path: 'home',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [LoggedInGuard]
     }, {
         path: 'role',
-        component: RoleComponent
+        component: RoleComponent,
+        canActivate: [LoggedInGuard]
     }, {
         path: 'dept',
         component: DeptManageComponent

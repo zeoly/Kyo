@@ -31,9 +31,13 @@ import { ClaimService } from './claim/claim.service';
 import { ClaimDetailComponent } from './claim/claim-detail.component';
 import { ExpenseComponent } from './estate/expense.component';
 import { DocumentComponent } from './document/document.component';
+import { LoggedInGuard } from './shared/logged-in.guard';
+import { AUTH_PROVIDERS } from './shared/auth.service';
+import { LoginComponent } from './shared/login.component';
 
 @NgModule({
   declarations: [
+    LoginComponent,
     AppComponent,
     RoleComponent,
     RoleDetailComponent,
@@ -72,6 +76,8 @@ import { DocumentComponent } from './document/document.component';
       useClass: KyoInterceptor,
       multi: true,
     },
+    AUTH_PROVIDERS,
+    LoggedInGuard,
     NotificationService,
     RoleService,
     DeptService,

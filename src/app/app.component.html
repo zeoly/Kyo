@@ -1,4 +1,5 @@
-<nz-layout style="height:100%">
+<app-login></app-login>
+<nz-layout style="height:100%" *ngIf="authService.getUser()">
     <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null" style="height:100%">
         <div class="logo">
         </div>
