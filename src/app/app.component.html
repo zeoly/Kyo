@@ -53,10 +53,17 @@
             <h1 style="color:#333;float: left" [routerLink]="['home']">宇宙无敌什么玩意系统</h1>
             <ul class="header-right">
                 <li class="header-float">
-                    <h2>Hello, USER!</h2>
+                    <h2>Hello, {{authService.getUser()}}!</h2>
                 </li>
                 <li class="header-float">
-                    <nz-avatar nzSize="large" nzText="USER"></nz-avatar>
+                    <nz-popover [nzTitle]="'操作'" [nzPlacement]="'bottomRight'" [nzTrigger]="'click'">
+                        <nz-avatar nz-popover nzSize="large" nzText="USER"></nz-avatar>
+                        <ng-template #nzTemplate>
+                            <div>
+                                <a href (click)="authService.logout()">登出</a>
+                            </div>
+                        </ng-template>
+                    </nz-popover>
                 </li>
             </ul>
         </nz-header>

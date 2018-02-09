@@ -24,7 +24,8 @@ const routes: Routes = [
         canActivate: [LoggedInGuard]
     }, {
         path: 'dept',
-        component: DeptManageComponent
+        component: DeptManageComponent,
+        canActivate: [LoggedInGuard]
     }, {
         path: 'report',
         component: ReportComponent
