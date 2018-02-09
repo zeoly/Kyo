@@ -14,7 +14,7 @@ export class LoggedInGuard implements CanActivate {
         if (this.authService.isLoggedIn()) {
             return true;
         } else {
-            location.href = '/login.html';
+            location.href = '/home';
             return false;
         }
     }

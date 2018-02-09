@@ -17,8 +17,7 @@ const routes: Routes = [
         pathMatch: 'full'
     }, {
         path: 'home',
-        component: DashboardComponent,
-        canActivate: [LoggedInGuard]
+        component: DashboardComponent
     }, {
         path: 'role',
         component: RoleComponent,
