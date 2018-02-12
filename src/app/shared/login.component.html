@@ -22,7 +22,9 @@
             </div>
         </div>
     </div>
-    <div class="alert alert-danger" role="alert" *ngIf="message">
-        {{ message }}
-    </div>
+    <nz-alert [nzType]="'error'" *ngIf="message">
+        <span alert-body>
+              <pre>{{ message }}</pre>
+            </span>
+    </nz-alert>
 </div>

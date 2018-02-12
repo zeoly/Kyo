@@ -18,10 +18,12 @@ export class LoginComponent {
     }
 
     login(user: string, password: string): boolean {
-        if (!this.authService.login(user, password)) {
-            this.message = 'Incorrect credentials.';
+        const data = this.authService.login(user, password);
+        if (data['code'] !== '999999') {
+            this.message = data['msg'];
+        } else {
+            return true;
         }
-        return false;
     }
 
     logout(): boolean {
