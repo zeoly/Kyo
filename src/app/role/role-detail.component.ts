@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 import { Role } from './role';
 import { RoleService } from './role.service';
 import { NzModalSubject } from 'ng-zorro-antd';
+import { error } from 'util';
 
 
 @Component({
@@ -60,12 +61,16 @@ export class RoleDetailComponent implements OnInit {
     modifyRole = (e) => {
         this.roleService.modifyRole(this.role).subscribe(data => {
             this.closeDetail('修改');
+        }, error => {
+            this.isConfirmLoading = false;
         });
     }
 
     addRole = (e) => {
         this.roleService.addRole(this.role).subscribe(data => {
             this.closeDetail('新增');
+        }, error => {
+            this.isConfirmLoading = false;
         });
     }
 
