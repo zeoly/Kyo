@@ -11,8 +11,15 @@ export class KyoInterceptor implements HttpInterceptor {
     constructor(private _message: NzMessageService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        console.log('token:' + localStorage.getItem('authorization'));
+        const newHeaders = req.headers.set('authorization', localStorage.getItem('authorization'));
         // const newReq = req.clone({ url: '/api' + req.url });
-        const newReq = req.clone({ url: 'http://localhost:8081' + req.url });
+        const newReq = req.clone({
+            // setHeaders: { 'authorization': localStorage.getItem('authorization')},
+            headers: newHeaders,
+            withCredentials: true,
+            url: 'http://localhost:8081' + req.url
+        });
         const observable = next.handle(newReq);
 
         // return observable.do(e => {

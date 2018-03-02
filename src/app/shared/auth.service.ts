@@ -19,7 +19,8 @@ export class AuthService {
             this.http.get('/session?' + 'username=' + name + '&password=' + auth).subscribe(
                 data => {
                     if (data['code'] === '999999') {
-                        localStorage.setItem(this.USER_KEY, data['data'].name);
+                        localStorage.setItem(this.USER_KEY, data['data'].people.name);
+                        localStorage.setItem('authorization', data['data'].token);
                     }
                     return data;
                 }
