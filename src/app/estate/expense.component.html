@@ -60,12 +60,12 @@
         </div>
         <div nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback [nzValidateStatus]="getFormControl('barrier')">
             <nz-select formControlName="barrier" [nzSize]="'large'" [(ngModel)]="barrier">
-                <nz-option [nzLabel]="'罗湖区'" [nzValue]="'0'"></nz-option>
-                <nz-option [nzLabel]="'龙岗区'" [nzValue]="'1'"></nz-option>
-                <nz-option [nzLabel]="'福田区'" [nzValue]="'2'"></nz-option>
-                <nz-option [nzLabel]="'南山区'" [nzValue]="'3'"></nz-option>
-                <nz-option [nzLabel]="'盐田区'" [nzValue]="'4'"></nz-option>
-                <nz-option [nzLabel]="'宝安区'" [nzValue]="'5'"></nz-option>
+                <nz-option [nzLabel]="'罗湖区'" [nzValue]="'luohu'"></nz-option>
+                <nz-option [nzLabel]="'龙岗区'" [nzValue]="'longgang'"></nz-option>
+                <nz-option [nzLabel]="'福田区'" [nzValue]="'futian'"></nz-option>
+                <nz-option [nzLabel]="'南山区'" [nzValue]="'nanshan'"></nz-option>
+                <nz-option [nzLabel]="'盐田区'" [nzValue]="'yantian'"></nz-option>
+                <nz-option [nzLabel]="'宝安区'" [nzValue]="'baoan'"></nz-option>
             </nz-select>
             <div nz-form-explain *ngIf="getFormControl('barrier').dirty&&getFormControl('barrier').hasError('required')">请选择!</div>
         </div>
